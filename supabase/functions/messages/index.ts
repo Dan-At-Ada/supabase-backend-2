@@ -24,8 +24,8 @@ serve(async (req: Request) => {
 
     // Handle POST request - add message
     if (req.method === "POST") {
-      const { message } = await req.json();
-      const { error } = await supabase.from("messages").insert([{ message }]);
+      const { content } = await req.json();
+      const { error } = await supabase.from("messages").insert([{ content }]);
 
       if (error) throw error;
       return new Response(
